@@ -1,0 +1,490 @@
+= Asciidoctor cheatsheet
+
+Hello, here are examples of the most common structures used
+in adoc. Feel free to copy them and use for your benefit.
+
+= Basic formatting
+Insert desired text between formatting characters.
+This is how you write *bold*. *Whole bold sentence.* +
+This is how you write _italics_. _Whole italics sentence._ +
+This is how you write `monospace`. `Whole monospace sentence.` +
+This is how you write #highlighted#. #Whole highlighted sentence.#
+
+= Using links
+Use whole link as EXAMPLE. https://google.com/[EXAMPLE].
+
+= Titles
+
+= Document Title (Level 0)
+
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+==== Level 3 Section Title
+
+===== Level 4 Section Title
+
+====== Level 5 Section Title
+
+== Another Level 1 Section Title
+
+:sectnums!:
+
+== Unnumbered Section
+=== Unnumbered Section
+
+:sectnums:
+
+[[section-one]]
+== Section One
+
+
+
+[[name-of-reference]]
+= References
+
+[[paragraph-reference]] Put this before desired referenced place. You use reference this way <<section-one>> <<paragraph-reference, Text shown on this place>>
+
+
+= Lists
+
+. first itme of list
+. second item of list
+. third, multiline item
+
+you see, this is broken, but it is okay, look at the example below
+
+. multiline item
++
+--
+// use this if you want to have something independent included in the list works
+//with all types(description, ordered, unordered), no need for pluses and almost
+//unbreakable
+indented, not broken
+
+I can even have a sublist here:
+
+. darling
+. cheatsheet
+. icecream
+
+or an example
+----
+example
+----
+
+Those two dashes marked segment can be inserted to any list
+--
+. fourth item of list
+
+
+.Ordered list
+. Number of dots equals level of indentation in a list
+. Second item of a list
+.. 2.1 item of a list
+.. 2.2 item of a list
+... 2.2.1 item of a list
+. Third item of a list
+
+
+.Unordered list
+
+* Edgar Allen Poe
+* Sheri S. Tepper
+** Sheri S. Tepper
+*** Bill Bryson
++
+Indented line without a bullet.
+* Bill Bryson
+
+.Unordered list
+- Edgar Allen Poe
+- Sheri S. Tepper
+- Bill Bryson
+
+.Description list
+Dairy::
+* Milk
+* Eggs
+Bakery::
+* Bread
+Produce::
+* Bananas
+
+.Nesting an unordered list inside of an ordered list:
+
+. Linux
+* Fedora
+* Ubuntu
+* Slackware
+. BSD
+* FreeBSD
+* NetBSD
+
+//pluses are also a solution for inserting blocks of something into lists but
+//it is easy to mistype something and break it
+
+.Nested Lists
+* Something
++
+----
+= Something else
+----
++
+This is something
+
+* something
++
+----
+= something else
+----
+
+* parent list item
+** child list item
+
++
+paragraph attached to parent list item
+
+
+.Checklists
+[%interactive]
+* [*] checked
+* [x] also checked
+* [ ] not checked
+*     normal list item
+
+:favourite-color: Blue
+//used in example below
+
+[horizontal]
+.Something that looks like two columns table but it is not a table
+
+Highlighted:: description or whatever
+
+Another:: some text
+
+Use variable here also as in line below:: team buildings and off-sites
+
+{favourite-color}:: is my favourite color
+
+
+= Admonitions
+
+//use name and : for single line admonitions and name in brackets fot mulitiline ones
+TIP: Single line or one paragraph content.
+
+
+[NOTE]
+Also works for single line texts.
+
+[IMPORTANT]
+====
+Use four of these -> =  at the beginning and the end of what you want to have written
+in the admonition and between them pretend that it is plain space and use
+
+.Lists
+. Something
+. Something
+====
+
+[WARNING]
+====
+.Images
+image::https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[Tux,250,350]
+====
+
+[CAUTION]
+====
+Or even tables
+
+[cols="h,m"]
+
+|===
+
+| Cell in column 1, row 1 | Cell in column 2, row 1
+
+| Cell in column 1, row 2 | Cell in column 2, row 2
+
+|===
+
+====
+
+
+= Including files
+
+Use relative path to another file
+
+include::folder/filename.adoc[]
+
+= Including images
+On separate line before image put + symbol, after image tag relative path in
+assets to desired image, you can also set
+width and align, but it is not necessary.
++
+image::folder-path/imagename.png[width=429, align="center"]
+
+= Including custom web content (GMap, albums, ...)
+
+Paste link into src property of iframe
+
+pass:[<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.911750609278!2d17.113067951389265!3d48.150506558137096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c89436623fb9d%3A0xe3ced6f838a58aab!2sVacuumlabs!5e0!3m2!1sen!2ssk!4v1552581493528" width="600" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>]
+
+= Tables
+In cols you can apply style to each column
+
+//50% of screen width is taken, header means that first line is in bold, 1,4,4
+//is ratio of column widths in space
+[cols="1,4,4",options="header",width="50%"]
+.Reward by the level and time
+|===
+|Level |Full-Time |Part-Time
+|9+ |1,000€ |500€
+|11+ |3,000€ |1,500€
+|15+ |5,000€ |2,500€
+|===
+
+//if you want to highlight something else than headers, can be used for whole
+//table or just before the cell as shown below
+.How to setup style
+[cols="h,m,s"]
+
+|===
+
+| Cell in column 1, row 1 | Cell in column 2, row 1 | Cell in column 3, row 1
+
+| Cell in column 1, row 2
+h| Cell in column 2, row 2 | Cell in column 3, row 2
+
+|===
+
+.How to setup alignment, for whole column or for single cell
+[cols="<,^,>"]
+|===
+
+| Cell in column 1, row 1 | Cell in column 2, row 1 | Cell in column 3, row 1
+
+| Cell in column 1, row 2 | Cell in column 2, row 2
+<| Cell in column 3, row 2
+
+|===
+
+
+.Cell spanning columns and rows
+|===
+
+3+|Content in a single cell that spans columns 1, 2, and 3 |Column 4, row 1
+
+|Column 1, row 2
+2.3+|Content in a single cell that spans over rows and columns
+|Column 4, row 2
+
+.2+|Content in a single cell that spans rows 2 and 3
+|Column 4, row 3
+
+|Column 1, row 4
+|Column 4, row 4
+|===
+
+.Cells aligned horizontally, vertically, and across a span of three columns
+[cols="3"]
+|===
+^|Prefix the `{vbar}` with `{caret}` to center content horizontally
+<|Prefix the `{vbar}` with `<` to align the content to the left horizontally
+>|Prefix the `{vbar}` with `>` to align the content to the right horizontally
+
+.^|Prefix the `{vbar}` with a `.` and `{caret}` to center the content in the cell vertically
+.<|Prefix the `{vbar}` with a `.` and `<` to align the content to the top of the cell
+.>|Prefix the `{vbar}` with a `.` and `>` to align the content to the bottom of the cell
+
+3+^.^|This content spans three columns (`3{plus}`) and is centered horizontally
+(`{caret}`) and vertically (`.{caret}`) within the cell.
+
+|===
+
+= Sidebars, examples...
+
+.Separated block of contents
+====
+Title for:: something that is indented but does not have a bullet
+
+Title for some::
+* bullet
+* pointed
+* things
+
+Or just regular paragraph cam be used here.
+
+Experiment and try to use another structures they should work here like they do
+usually.
+====
+
+====
+It is not necessary to have a red title above the example just omit the dot, works
+also for the blocks mentioned below
+====
+
+====
+This is an example
+======
+This is an example inside an example
+======
+====
+
+.This has big title - cool, isn't it?
+****
+Use asterisks to create a block of different colour than example, title can be also
+omitted here, see below
+
+Title for:: something that is indented but does not have a bullet
+
+Title for some::
+* bullet
+* pointed
+* things
+
+Or just regular paragraph cam be used here.
+
+Experiment and try to use another structures they should work here like they do usually.
+====
+You can even put an example here
+====
+****
+
+****
+You can omit title and it will still work
+****
+
+.Ahother type of separated section
+----
+Cheange equation marks for dashes and enjoy different design with monospace font.
+
+But this type of block can be used just for plain text, no lists or other elements
+work here.
+----
+
+----
+Also works without a title
+To: invoices@vacuumlabs.com
+    Subject: URGENT
+Attachments: print_invoice.pdf
+----------------------------------------------------------------------------
+This invoice needs to be paid immediately! 2,500 € belongs to ReactiveConf,
+1,000 € to Marketing.
+----
+
+//here you can also write things that have whitespaces and they wont be deleted
+//and also signs that have a particular role in asciidoc that dont need to be escaped
+//such as:
+....
+Another type of block element...
+
+         To: invoices@vacuumlabs.com
+    Subject: URGENT
+Attachments: print_invoice.pdf
+----------------------------------------------------------------------------
+This invoice needs to be paid immediately! 2,500 € belongs to ReactiveConf,
+1,000 € to Marketing.
+....
+
+[listing]
+sudo dnf install asciidoc
+
+[quote, John F. Kennedy, a long tinme ago ]
+Those who dare to fail miserably can achieve greatly.
+
+// you can ommit the last two attributes and have just quote
+
+= Variables
+
+:My name: Alex Efros
+My name is {myname}
+
+Escaped: \{myname} and +++{myname}+++
+
+= Images & videos
+
+.Caption to an image with figure
+image::https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[250,350]
+//in brackets write dimensions - first number is width and second one is height
+
+:figure-caption!:
+.Caption to an image without figure
+image::https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg[250,350]
+
+image::name-of-image.png[]
+
+.Caption to a video
+video::video_file.mp4[]
+
+.Embedding a YouTube video
+video::rPQoq7ThGAU[youtube,600,400]
+//in brackets write youtube as source, first number is width and second one is height
+
+
+= Comments
+
+// A single-line comment.
+
+TIP: Single-line comments can be used to divide elements, such as two adjacent lists.
+
+////
+A multi-line comment.
+
+Notice it's a delimited block.
+////
+
+= Header file you should include in every project
+
+// Include headers in all files to support Atom's Asciidoc Preview plugin.
+ifndef::header[]
+:header:
+
+:toc: left
+//determines on which side is the table of contents
+:doctype: book
+//Doctype can be article, book or manpage
+:sectlinks:
+//When this document attribute is set, the section titles become self-links.
+//This enables a reader to bookmark the section.
+:sectanchors:
+//When this document attribute is set, a section icon anchor appears in front
+//of the section title.
+:sectnums:
+//:sectnums: - sections are numbered; :sectnums!: - sections are not numbered
+//you can change it inside a document and will be applied to the rest from the
+//point where you change it or until you change it to the other one
+:icons: font
+//This must be included to have Admonitions icons available
+:experimental:
+// Enables some macros
+:source-highlighter: highlightjs
+//Enabling the syntax highlighter
+
+:highlightjsdir: assets/highlight
+:stem:
+:linkattrs:
+:toclevels: 3
+include::roles.adoc[]
+include::urls.adoc[]
+:t: pass:[<span style="white-space:nowrap">&thinsp;</span>]
+:commandkey: &#8984;
+endif::header[]
+
+This is standard we use in our handbooks, feel free to modify it so it will suit you.
+
+[WARNING]
+===
+Include all other adoc files
+
+....
+ include::roles.adoc[]
+ include::urls.adoc[]
+ ...
+....
+
+Include header at the top of each document inside other parts as a relative file path, if on the same level omit ../
+....
+ include::../header.adoc[]
+....
+===
