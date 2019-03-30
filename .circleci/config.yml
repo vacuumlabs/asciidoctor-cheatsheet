@@ -17,6 +17,7 @@ jobs:
       - run: bundle install
       - run: cp docs.json .docsignore assets -R dist/
       - run: bundle exec asciidoctor README.adoc -D dist
+      - run: mv dist/README.html dist/index.html
       - run: sudo npm install -g antman-cli
       - run: antman upload -a -k $API_KEY https://we.vacuumlabs.com ./dist
 
