@@ -180,7 +180,7 @@ CAUTION: It might be confusing for your readers if you overdo it.
 WARNING: Don't overuse them.
 
 === Quotes
-[quote, John F. Kennedy, a long tinme ago ]
+[quote, John F. Kennedy, a long time ago ]
 Those who dare to fail miserably can achieve greatly.
 
 === Sidebars
@@ -226,13 +226,13 @@ image::assets/cute-kitty.jpg[width=400, align="left"]
 image::assets/cute-giraffe.jpg[width=400, align="right"]
 
 === Custom Embedded Content
-You can embed various contents such as Google Maps, Youtube videos, and tons of
+You can embed various contents such as Google Maps, YouTube videos, and tons of
 others. All you need is `iframe` code, which is usually provided by those sites.
 
 .Radlinského Office
 pass:[<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.911750609278!2d17.113067951389265!3d48.150506558137096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c89436623fb9d%3A0xe3ced6f838a58aab!2sVacuumlabs!5e0!3m2!1sen!2ssk!4v1552581493528" width="600" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>]
 
-Asciidoctor has a built-in support for youtube videos, embedding them is even
+Asciidoctor has a built-in support for YouTube videos, embedding them is even
 easier:
 
 video::9bZkp7q19f0[youtube,600,400]
