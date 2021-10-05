@@ -1,3 +1,4 @@
 {
-  "alias": "asciidoctor-cheatsheet"
+  "alias": "asciidoctor-cheatsheet",
+  "read": ["hq@vacuumlabs.com"]
 }
